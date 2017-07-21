@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise; // mongoose promise is deprecated
-mongoose.connect('mongodb://localhost/driver', { useMongoClient: true })
+mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
 .then(() => {
   app.server.listen(process.env.PORT || 8080, () => {
     console.log(`Started on port ${app.server.address().port}`);
